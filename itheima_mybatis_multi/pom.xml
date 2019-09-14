@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.itheima</groupId>
+    <artifactId>itheima_mybatis_multi</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <!--      数据库-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.32</version>
+        </dependency>
+        <!--  mybatis      -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.2.8</version>
+        </dependency>
+        <!--    junit 测试-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <!--     log4j 错误日志   -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <!--        <finalName></finalName> ＋的-->
+        <finalName>ROOT</finalName>
+        <!--maven插件-->
+        <plugins>
+            <!--jdk编译插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+
+
+                    <!--              Tomcat插件      1.8-->
+                    <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
+            <!--tomcat插件-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <!-- tomcat7的插件， 不同tomcat版本这个也不一样 -->
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <!-- 通过maven tomcat7:run运行项目时，访问项目的端口号 -->
+                    <port>80</port>
+                    <!-- 项目访问路径  本例：localhost:9090,  如果配置的aa， 则访问路径为localhost:9090/aa-->
+                    <path>/travel</path>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
