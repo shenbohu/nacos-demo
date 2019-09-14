@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--通过properties标签加载外部properties文件-->
+    <!-- resource类路径下查找   -->
+    <properties resource="jdbc.properties"></properties>
+
+    <!--自定义别名-->
+    <typeAliases>
+        <typeAlias type="com.itheima.domain.User" alias="user"></typeAlias>
+        <!--  给指定包下的所有类起别名    不区分大小写-->
+        <package name=""/>
+    </typeAliases>
+
+    <!--数据源环境-->
+    <environments default="developement">
+        <environment id="developement">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <!--加载映射文件-->
+    <mappers>
+        <!--  一次加载一个-->
+        <!--  resource  从类路径下载      -->
+        <!--  class 接口的全限定名    -->
+        <!--  url-->
+        <mapper resource="com/itheima/mapper/UserMapper.xml"></mapper>
+        <!--  一次下载一个包下的所有文件-->
+        <package name=""/>
+    </mappers>
+
+
+</configuration>
