@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.ConfigInfoConfigInfoMapper">
+  <resultMap id="BaseResultMap" type="example.pojo.ConfigInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="data_id" jdbcType="VARCHAR" property="dataId" />
+    <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="md5" jdbcType="VARCHAR" property="md5" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="src_user" jdbcType="VARCHAR" property="srcUser" />
+    <result column="src_ip" jdbcType="VARCHAR" property="srcIp" />
+    <result column="app_name" jdbcType="VARCHAR" property="appName" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId" />
+    <result column="c_desc" jdbcType="VARCHAR" property="cDesc" />
+    <result column="c_use" jdbcType="VARCHAR" property="cUse" />
+    <result column="effect" jdbcType="VARCHAR" property="effect" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="c_schema" jdbcType="VARCHAR" property="cSchema" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, data_id, group_id, content, md5, gmt_create, gmt_modified, src_user, src_ip, 
+    app_name, tenant_id, c_desc, c_use, effect, `type`, c_schema
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from config_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from config_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="example.pojo.ConfigInfo" useGeneratedKeys="true">
+    insert into config_info (data_id, group_id, content, 
+      md5, gmt_create, gmt_modified, 
+      src_user, src_ip, app_name, 
+      tenant_id, c_desc, c_use, 
+      effect, `type`, c_schema
+      )
+    values (#{dataId,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{md5,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{srcUser,jdbcType=VARCHAR}, #{srcIp,jdbcType=VARCHAR}, #{appName,jdbcType=VARCHAR}, 
+      #{tenantId,jdbcType=VARCHAR}, #{cDesc,jdbcType=VARCHAR}, #{cUse,jdbcType=VARCHAR}, 
+      #{effect,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{cSchema,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="example.pojo.ConfigInfo" useGeneratedKeys="true">
+    insert into config_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dataId != null">
+        data_id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="md5 != null">
+        md5,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="srcUser != null">
+        src_user,
+      </if>
+      <if test="srcIp != null">
+        src_ip,
+      </if>
+      <if test="appName != null">
+        app_name,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="cDesc != null">
+        c_desc,
+      </if>
+      <if test="cUse != null">
+        c_use,
+      </if>
+      <if test="effect != null">
+        effect,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="cSchema != null">
+        c_schema,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dataId != null">
+        #{dataId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="md5 != null">
+        #{md5,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="srcUser != null">
+        #{srcUser,jdbcType=VARCHAR},
+      </if>
+      <if test="srcIp != null">
+        #{srcIp,jdbcType=VARCHAR},
+      </if>
+      <if test="appName != null">
+        #{appName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="cDesc != null">
+        #{cDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cUse != null">
+        #{cUse,jdbcType=VARCHAR},
+      </if>
+      <if test="effect != null">
+        #{effect,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="cSchema != null">
+        #{cSchema,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="example.pojo.ConfigInfo">
+    update config_info
+    <set>
+      <if test="dataId != null">
+        data_id = #{dataId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="md5 != null">
+        md5 = #{md5,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="srcUser != null">
+        src_user = #{srcUser,jdbcType=VARCHAR},
+      </if>
+      <if test="srcIp != null">
+        src_ip = #{srcIp,jdbcType=VARCHAR},
+      </if>
+      <if test="appName != null">
+        app_name = #{appName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="cDesc != null">
+        c_desc = #{cDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cUse != null">
+        c_use = #{cUse,jdbcType=VARCHAR},
+      </if>
+      <if test="effect != null">
+        effect = #{effect,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="cSchema != null">
+        c_schema = #{cSchema,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="example.pojo.ConfigInfo">
+    update config_info
+    set data_id = #{dataId,jdbcType=VARCHAR},
+      group_id = #{groupId,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      md5 = #{md5,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      src_user = #{srcUser,jdbcType=VARCHAR},
+      src_ip = #{srcIp,jdbcType=VARCHAR},
+      app_name = #{appName,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=VARCHAR},
+      c_desc = #{cDesc,jdbcType=VARCHAR},
+      c_use = #{cUse,jdbcType=VARCHAR},
+      effect = #{effect,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=VARCHAR},
+      c_schema = #{cSchema,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
